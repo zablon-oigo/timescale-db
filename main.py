@@ -11,3 +11,7 @@ from twelvedata import TDClient
    ws = td.websocket(symbols=["BTC/USD", "ETH/USD"], on_event=on_event)
    ws.subscribe(['ETH/BTC', 'AAPL'])
    ws.connect()
+while True:
+   print('messages received: ', len(messages_history))
+   ws.heartbeat()
+   time.sleep(10)
