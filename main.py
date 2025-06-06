@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 load_dotenv()
 
 DB_COLUMNS = ["time", "symbol", "price", "day_volume" ,"exchange"]
+MAX_BATCH_SIZE = 100
 messages_history = []
 
 def on_event(event):
