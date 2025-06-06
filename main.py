@@ -1,11 +1,14 @@
+import os
 import time
-from dotenv import load_dotenv 
-import os 
+from dotenv import load_dotenv
+import psycopg2
+from psycopg2.extras import execute_values
+from twelvedata import TDClient
+from datetime import datetime, timezone
 
 load_dotenv()
 
-from twelvedata import TDClient
-
+DB_COLUMNS = ["time", "symbol", "price", "day_volume" ,"exchange"]
 messages_history = []
 
 def on_event(event):
