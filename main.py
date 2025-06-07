@@ -28,3 +28,7 @@ def start(self, symbols):
         ws = td.websocket(on_event=self._on_event)
         ws.subscribe(symbols)
         ws.connect()
+        print("WebSocket connected and listening...")
+        while True:
+            ws.heartbeat()
+            time.sleep(10)
