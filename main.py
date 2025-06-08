@@ -13,6 +13,16 @@ MAX_BATCH_SIZE = 100
 messages_history = []
 
 def on_event(event):
+   if event["event"] == "price":
+      try:
+          timestamp = datetime.fromtimestamp(event["timestamp"], tz=timezone.utc)
+                data = (
+                    timestamp,
+                    event["symbol"],
+                    event["price"],
+                    event.get("day_volume"),
+                    event["exchange"]
+                )
    print(event)
    messages_history.append(event)
 td = TDClient(apikey=os.getenv("API_KEY"))
