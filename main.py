@@ -23,6 +23,7 @@ def on_event(event):
                     event.get("day_volume"),
                     event["exchange"]
                 )
+      self.current_batch.append(data)
    print(event)
    messages_history.append(event)
 td = TDClient(apikey=os.getenv("API_KEY"))
