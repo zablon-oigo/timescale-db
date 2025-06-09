@@ -26,6 +26,9 @@ def on_event(event):
       self.current_batch.append(data)
    print(event)
    messages_history.append(event)
+   if len(self.current_batch) >= self.MAX_BATCH_SIZE:
+                    self._insert_values(self.current_batch)
+
 td = TDClient(apikey=os.getenv("API_KEY"))
 ws = td.websocket(symbols=["BTC/USD", "ETH/USD"], on_event=on_event)
 ws.subscribe(['ETH/BTC', 'AAPL'])
