@@ -9,8 +9,8 @@ from datetime import datetime, timezone
 load_dotenv()
 
 class WebsocketPipeline:
-    DB_TABLE = "crypto_ticks"  
-    DB_COLUMNS = ["time", "symbol", "price", "day_volume" , "exchange"]
+    DB_TABLE = os.getenv("DB_TABLE")
+    DB_COLUMNS = ["time", "symbol", "price", "day_volume", "exchange"]
     MAX_BATCH_SIZE = 100
 
     def __init__(self, conn):
@@ -69,7 +69,7 @@ class WebsocketPipeline:
 if __name__ == "__main__":
     try:
         conn = psycopg2.connect(
-            database="tsdb",
+            database=os.getenv("DB_NAME"),
             host=os.getenv("HOST"),
             user="tsdbadmin",
             password=os.getenv("PASSWORD"),
