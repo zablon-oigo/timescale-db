@@ -8,3 +8,7 @@ def mock_conn():
     cursor = MagicMock()
     conn.cursor.return_value = cursor
     return conn
+
+def test_on_event_price_inserts_when_batch_full(monkeypatch, mock_conn):
+    pipeline = WebsocketPipeline(mock_conn)
+    pipeline.MAX_BATCH_SIZE = 2
