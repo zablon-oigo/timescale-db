@@ -12,3 +12,8 @@ def mock_conn():
 def test_on_event_price_inserts_when_batch_full(monkeypatch, mock_conn):
     pipeline = WebsocketPipeline(mock_conn)
     pipeline.MAX_BATCH_SIZE = 2
+
+
+
+    pipeline._on_event(sample_event)
+    assert len(pipeline.current_batch) == 1
