@@ -30,3 +30,4 @@ def test_on_event_price_inserts_when_batch_full(monkeypatch, mock_conn):
 
 def test_on_event_non_price_event_is_ignored(mock_conn):
     pipeline = WebsocketPipeline(mock_conn)
+    pipeline._on_event({"event": "heartbeat"})
