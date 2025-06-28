@@ -2,7 +2,7 @@ CREATE TABLE crypto_ticks (
     time TIMESTAMPTZ NOT NULL,
     symbol TEXT NOT NULL,
     price DOUBLE PRECISION,
-    day_volume NUMERIC
+    exchange TEXT
 );
 
 SELECT create_hypertable(
